@@ -32,3 +32,99 @@ body {
     font-size: .8rem;
 
 }
+
+// Sidebar Section
+
+.sidebar {
+	width: 250px;
+	position: absolute;
+	top: 80px;
+	bottom: 0;
+	// left: -270px;
+	transition: all 0.5s ease;
+    padding: 0 15px;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    background: #fff;
+}
+
+h2 {
+    font-size: .8rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+h3 {
+    font-size: .6rem;
+    font-weight: 300;
+    margin-top: 5px;
+}
+
+.list-item {
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+.search input {
+    border-radius: 50px;
+    margin: 25px;
+    outline: none;
+}
+
+// Journal Entry
+
+.entry {
+	width: 600px;
+	position: absolute;
+	top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 60%;
+	background: #ffffff;
+	transition: all 0.5s ease;
+    padding: 20px;
+    box-shadow: 3px 2px 3px rgba(0,0,0,0.1);
+
+}
+
+.entry input,
+.entry textarea {
+	width: 100%;
+	margin-bottom: 25px;
+    border: none;
+    outline: none;
+    padding: 5px;
+}
+.entry input {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.entry textarea {
+	height: 325px;
+}
+
+.entry input[type=submit] {
+    width: 25%;
+	border: none;
+	color: #099ffc;
+    background-color: white;
+    float: right;
+    text-align: right;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+form .fa-lightbulb,
+form .fa-image,
+form .fa-map-marker-alt,
+form .fa-trash-alt {
+    color: rgb(109, 109, 109);
+    margin: 0 10px;
+    font-size: 1.2rem;
+}
+form .fa-lightbulb:hover,
+form .fa-image:hover,
+form .fa-map-marker-alt:hover,
+form .fa-trash-alt:hover  {
+	cursor: pointer;
+}
