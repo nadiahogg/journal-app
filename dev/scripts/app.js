@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ListItem from './listItem.js'
-import Moment from "moment";
+import moment from "moment";
 
 const config = {
     apiKey: "AIzaSyA4JN1C6uThQMRWpAh9yyjKr4rud4xBEcI",
@@ -19,6 +19,7 @@ class App extends React.Component {
     super();
     this.showEntriesList = this.showEntriesList.bind(this);
     this.newJournalEntry = this.newJournalEntry.bind(this);
+    this.showEntry = this.showEntry.bind(this);
     this.state = {
       entries: []
     };
@@ -39,6 +40,8 @@ class App extends React.Component {
           entries: dataArray
         });
       });
+
+       
   }
 
   newJournalEntry(e) {
@@ -53,7 +56,8 @@ class App extends React.Component {
     console.log("submitted");
     const entry = {
       title: this.entryTitle.value,
-      text: this.entryText.value
+      text: this.entryText.value,
+      date: moment().format("x")
     };
 
     const dbref = firebase.database().ref();
@@ -62,15 +66,14 @@ class App extends React.Component {
 
     this.entryTitle.value = "";
     this.entryText.value = "";
-    // this.newJournalEntry(e);
     this.entry.classList.toggle("show");
     this.showEntriesList(e);
   }
 
-  showEntry(entryId) {
-    console.log(entryId);
-    const dbRef = firebase.database().ref(entryId);
-    dbRef.remove();
+  showEntry(index) {
+    console.log(index.key);
+    this.journal.classList.add("show");
+    
   }
 
   removeEntry(entryId) {
@@ -81,11 +84,10 @@ class App extends React.Component {
 
   showEntriesList(e) {
     e.preventDefault();
-    console.log("sidebar");
     this.sidebar.classList.toggle("show");
     this.nav.classList.toggle("active");
   }
-
+  
   render() {
     return (
       <div>
@@ -120,10 +122,10 @@ class App extends React.Component {
               type="text"
               name="entry-title"
               ref={ref => (this.entryTitle = ref)}
-              placeholder="Title"
+              placeholder="Title" required
             />
             <div className="date" ref={ref => (this.date = ref)}>
-              <p>this is the date placeholder</p>
+              <p>{moment().format("MMMM Do")}</p>
             </div>
             <label htmlFor="entry-text" />
             <textarea
@@ -137,10 +139,19 @@ class App extends React.Component {
             <i className="far fa-trash-alt" />
             <input type="submit" value="DONE" />
           </form>
+        </section>
 
-          <div className="readEntry">
-            <ReadEntry />
+        <section className="journal" ref={ref => {
+            console.log(ref);
+            (this.journal = ref);
+            console.log(this.journal);
+        }}>
+          <div className="entry-preview">
+            <h2>{this.state.entries.title}</h2>
+            <h3>This is the Content</h3>
+            <i className="far fa-edit"></i>
           </div>
+
         </section>
 
         <aside className="sidebar" ref={ref => (this.sidebar = ref)}>
@@ -158,7 +169,8 @@ class App extends React.Component {
                   <ListItem
                     entry={entry}
                     key={`entry-${i}`}
-                    removeEntry={this.removeEntry}
+                    showEntry={this.showEntry}
+                    index={i}
                   />
                 );
               })

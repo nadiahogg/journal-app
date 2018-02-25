@@ -87,7 +87,7 @@ h2 {
     margin-bottom: 0;
 }
 
-h2:hover {
+.list-item h2:hover {
     cursor: pointer;
     text-decoration: underline;
 }
@@ -107,9 +107,6 @@ h3 {
 }
 
 .list-item {
-    position: absolute;
-	top: 20px;
-	right: 20px;
     z-index: 5;
     border-top: 1px solid grey;
     padding: 0 15px;
@@ -133,30 +130,12 @@ h3 {
     bottom: -270px;
 
 }
-
-.read-entry {
-	position: absolute;
-	top: 25%;
-    left: 15%;
-    width: 70%;
-    height: 60%;
-	background: #ffffff;
-	transition: all 0.5s ease;
-    padding: 20px;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
-    0 3px 1px -2px rgba(0,0,0,0.2),
-    0 1px 5px 0 rgba(0,0,0,0.12);
-    bottom: -270px;
-
-}
-
 .entry.show {
     top: 25%;
 }
 
-.entry.slide {
-    left: 25%
-}
+
+
 
 .entry input,
 .entry textarea {
@@ -170,6 +149,7 @@ h3 {
 .entry .date {
     float: right;
     width: 40%;
+    text-align: right;
 }
 .entry input {
     font-size: 1.2rem;
@@ -205,4 +185,70 @@ form .fa-image:hover,
 form .fa-map-marker-alt:hover,
 form .fa-trash-alt:hover  {
 	cursor: pointer;
+}
+
+// Read journal entry
+.journal {
+    margin: 0 auto;
+    width: 70%;
+    padding: 0 50px;
+    display: none;
+}
+
+.journal.show {
+    display: block;
+}
+
+.entry-preview {
+	background: white;
+	box-shadow: 3px 2px 3px rgba(0,0,0,0.1);
+	margin: 15px;
+	padding: 20px;
+	position: relative;
+}
+
+.entry-preview h2 {
+	margin-top: 0;
+	position: relative;
+}
+
+.entry-preview h3:after {
+	width: 20px;
+	height: 2px;
+	background: #182020;
+	display: block;
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	content: "";
+}
+
+.entry-preview input,
+.entry-preview textarea {
+	border: none;
+	border-bottom: 2px solid #182020;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.entry-preview .fa-times,
+.entry-preview .fa-edit {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 5;
+}
+.entry-preview .fa:hover {
+	cursor: pointer;
+}
+
+.entry-preview .fa-edit {
+	right: 50px;
+}
+
+.entry-preview input[type=submit] {
+	width: auto;
+	border: 2px solid #182020;
+	color: #182020;
+	background: transparent;
 }
