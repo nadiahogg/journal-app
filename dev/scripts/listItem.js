@@ -4,7 +4,7 @@ import moment from "moment";
 const ListItem = (props) => {
 console.log(props.index)
     return (
-        <div className="list-item" onClick={() => props.showEntry(props.entry)} data-index={props.index}>
+        <div className="list-item" onClick={() => props.showEntry(props.index)} data-index={props.index}>
             <h2>
           {props.entry.title}
             </h2>

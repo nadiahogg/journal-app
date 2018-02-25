@@ -21,7 +21,10 @@ class App extends React.Component {
     this.newJournalEntry = this.newJournalEntry.bind(this);
     this.showEntry = this.showEntry.bind(this);
     this.state = {
-      entries: []
+      entries: [],
+      index: -1,
+      title: '',
+
     };
   }
 
@@ -71,8 +74,12 @@ class App extends React.Component {
   }
 
   showEntry(index) {
-    console.log(index.key);
-    this.journal.classList.add("show");
+    console.log(index);
+    console.log(this.state.entries[index].title);
+    this.setState({ index, title: this.state.entries[index].title, text: this.state.entries[index].text});
+    
+    
+    this.entry.classList.add("show");
     
   }
 
@@ -89,6 +96,12 @@ class App extends React.Component {
   }
   
   render() {
+    let entryTitle;
+    if (this.state.index > -1) {
+      entryTitle = (
+        "{this.state.entries[index].title}"
+      )
+    }
     return (
       <div>
         <header className="mainHeader">
@@ -122,6 +135,7 @@ class App extends React.Component {
               type="text"
               name="entry-title"
               ref={ref => (this.entryTitle = ref)}
+              value={this.state.title}
               placeholder="Title" required
             />
             <div className="date" ref={ref => (this.date = ref)}>
@@ -131,6 +145,7 @@ class App extends React.Component {
             <textarea
               name="entry-text"
               ref={ref => (this.entryText = ref)}
+              value={this.state.text}
               placeholder="Write your story"
             />
             <i className="far fa-lightbulb" />
