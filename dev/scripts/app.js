@@ -192,7 +192,7 @@ class App extends React.Component {
                   </div>
                 </div>
                 <div className="save-cancel">
-                  
+                    <button onClick={this.signIn}>CANCEL</button>
                     <input type="submit" value="DONE" />
                   
                 </div>
