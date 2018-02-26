@@ -3,9 +3,11 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 body {
-	background: #e8e8e8;
-	color: #343e3e;
-	min-height: 100vh;
+	background-image: linear-gradient(rgba(63, 63, 63, 0.55),  rgba(63, 63, 63, 0.55)), url(https://source.unsplash.com/random/1027x740);
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter-blur: 5px;
 }
 
 // Main Header
@@ -99,7 +101,6 @@ h3 {
 }
 
 
-
 .search input {
     border-radius: 50px;
     margin: 25px;
@@ -107,7 +108,6 @@ h3 {
 }
 
 .list-item {
-    z-index: 5;
     border-top: 1px solid grey;
     padding: 0 15px;
 }
@@ -121,13 +121,16 @@ h3 {
     left: 15%;
     width: 70%;
     height: 60%;
-	background: #ffffff;
+	// background: rgba(255, 255, 255, .9);
 	transition: all 0.5s ease;
     padding: 20px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
     0 3px 1px -2px rgba(0,0,0,0.2),
     0 1px 5px 0 rgba(0,0,0,0.12);
     bottom: -270px;
+    background: linear-gradient(rgba(255, 254, 254, 0.75),  rgba(255, 254, 254, 0.75));
+ 
+  
 
 }
 .entry.show {
@@ -140,10 +143,10 @@ h3 {
 .entry input,
 .entry textarea {
 	width: 100%;
-	margin-bottom: 25px;
     border: none;
     outline: none;
     padding: 5px;
+    background-color: rgba(255, 254, 254, 0.65);
 }
 
 .entry .date {
@@ -155,21 +158,24 @@ h3 {
     font-size: 1.2rem;
     font-weight: 600;
     width: 60%;
+    
 }
 
 .entry textarea {
-	height: 325px;
+	height: 300px;
 }
 
 .entry input[type=submit] {
-    width: 25%;
-	border: none;
+    width: 100%;
+    border: none;
 	color: #099ffc;
     background-color: white;
     float: right;
     text-align: right;
     font-size: 1rem;
     font-weight: 400;
+        background-color: rgba(255, 254, 254, 0);
+
 }
 
 form .fa-lightbulb,
@@ -179,12 +185,19 @@ form .fa-trash-alt {
     color: rgb(109, 109, 109);
     margin: 0 10px;
     font-size: 1.2rem;
+    z-index: 20;
+
 }
 form .fa-lightbulb:hover,
 form .fa-image:hover,
 form .fa-map-marker-alt:hover,
 form .fa-trash-alt:hover  {
 	cursor: pointer;
+}
+
+.options, .save-cancel {
+    display: flex;
+    width: 50%;
 }
 
 // Read journal entry
@@ -223,32 +236,8 @@ form .fa-trash-alt:hover  {
 	content: "";
 }
 
-.entry-preview input,
-.entry-preview textarea {
-	border: none;
-	border-bottom: 2px solid #182020;
-	margin-bottom: 10px;
-	width: 100%;
-}
-
-.entry-preview .fa-times,
-.entry-preview .fa-edit {
-	position: absolute;
-	top: 20px;
-	right: 20px;
-	z-index: 5;
-}
-.entry-preview .fa:hover {
-	cursor: pointer;
-}
-
-.entry-preview .fa-edit {
-	right: 50px;
-}
-
-.entry-preview input[type=submit] {
-	width: auto;
-	border: 2px solid #182020;
-	color: #182020;
-	background: transparent;
+.footer {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
 }

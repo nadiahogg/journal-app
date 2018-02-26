@@ -22,9 +22,9 @@ class App extends React.Component {
     this.showEntry = this.showEntry.bind(this);
     this.state = {
       entries: [],
-      index: -1,
-      title: '',
-
+      index: null,
+      text: null,
+      title: null,
     };
   }
 
@@ -49,9 +49,15 @@ class App extends React.Component {
 
   newJournalEntry(e) {
     e.preventDefault();
-    this.entry.classList.toggle("show");
+    this.setState({
+      title: null,
+      text: null,
+      index: null,
+    })
+    this.entry.classList.add("show");
     this.sidebar.classList.remove("show");
     this.nav.classList.remove("active");
+    
   }
 
   saveEntry(e) {
@@ -69,24 +75,32 @@ class App extends React.Component {
 
     this.entryTitle.value = "";
     this.entryText.value = "";
-    this.entry.classList.toggle("show");
+    this.entry.classList.remove("show");
     this.showEntriesList(e);
   }
 
   showEntry(index) {
-    console.log(index);
+    console.log(this.props.index);
     console.log(this.state.entries[index].title);
-    this.setState({ index, title: this.state.entries[index].title, text: this.state.entries[index].text});
+    console.log(this.state.entries[index].key);
+    this.setState({ index: this.state.entries[index].key, title: this.state.entries[index].title, text: this.state.entries[index].text });
     
     
     this.entry.classList.add("show");
+    this.sidebar.classList.remove("show");
     
   }
 
-  removeEntry(entryId) {
-    console.log(entryId);
-    const dbRef = firebase.database().ref(entryId);
+  removeEntry(entryKey) {
+    entryKey = this.state.index
+    console.log(entryKey);
+    const dbRef = firebase.database().ref(entryKey);
+    
     dbRef.remove();
+    
+    
+    this.entry.classList.remove("show");
+
   }
 
   showEntriesList(e) {
@@ -97,7 +111,7 @@ class App extends React.Component {
   
   render() {
     let entryTitle;
-    if (this.state.index > -1) {
+    if (this.state.index) {
       entryTitle = (
         "{this.state.entries[index].title}"
       )
@@ -139,7 +153,7 @@ class App extends React.Component {
               placeholder="Title" required
             />
             <div className="date" ref={ref => (this.date = ref)}>
-              <p>{moment().format("MMMM Do")}</p>
+              <p onClick={this.showEntriesList}>{moment().format("MMMM Do")}</p>
             </div>
             <label htmlFor="entry-text" />
             <textarea
@@ -148,26 +162,30 @@ class App extends React.Component {
               value={this.state.text}
               placeholder="Write your story"
             />
-            <i className="far fa-lightbulb" />
-            <i className="far fa-image" />
-            <i className="fas fa-map-marker-alt" />
-            <i className="far fa-trash-alt" />
-            <input type="submit" value="DONE" />
+            <div className="footer">
+                <div className="options">
+                  <div>
+                      <i className="far fa-lightbulb" />
+                  </div>
+                  <div>
+                      <i className="far fa-image" />
+                  </div>
+                  <div>
+                      <i className="fas fa-map-marker-alt" />
+                  </div>
+                  <div onClick={() => this.removeEntry(this.entry.key)}>
+                    <i className="far fa-trash-alt"></i>
+                  </div>
+                </div>
+                <div className="save-cancel">
+                  
+                    <input type="submit" value="DONE" />
+                  
+                </div>
+            </div>
           </form>
         </section>
 
-        <section className="journal" ref={ref => {
-            console.log(ref);
-            (this.journal = ref);
-            console.log(this.journal);
-        }}>
-          <div className="entry-preview">
-            <h2>{this.state.entries.title}</h2>
-            <h3>This is the Content</h3>
-            <i className="far fa-edit"></i>
-          </div>
-
-        </section>
 
         <aside className="sidebar" ref={ref => (this.sidebar = ref)}>
           <div className="close" onClick={this.showEntriesList}>

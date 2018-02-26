@@ -8,7 +8,7 @@ console.log(props.index)
             <h2>
           {props.entry.title}
             </h2>
-            <h3>{moment(props.entry.date, "x").format("MMMM Do YYYY, h:mm:ss a")}</h3>
+            <h3>{moment(props.entry.date, "x").format("MMMM Do YYYY, h:mm a")}</h3>
         </div>
     )
 };
