@@ -17,15 +17,18 @@ firebase.initializeApp(config);
 class App extends React.Component {
   constructor() {
     super();
+    
+    this.state = {
+      entries: [],
+      index: "",
+      text: "",
+      title: ""
+      
+    };
     this.showEntriesList = this.showEntriesList.bind(this);
     this.newJournalEntry = this.newJournalEntry.bind(this);
     this.showEntry = this.showEntry.bind(this);
-    this.state = {
-      entries: [],
-      index: null,
-      text: null,
-      title: null,
-    };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -50,9 +53,9 @@ class App extends React.Component {
   newJournalEntry(e) {
     e.preventDefault();
     this.setState({
-      title: null,
-      text: null,
-      index: null,
+      title: "",
+      text: "",
+      index: "",
     })
     this.entry.classList.add("show");
     this.sidebar.classList.remove("show");
@@ -60,29 +63,36 @@ class App extends React.Component {
     
   }
 
+  handleChange(e) {
+    // console.log(e.target.value);
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
+
   saveEntry(e) {
     e.preventDefault();
     console.log("submitted");
     const entry = {
-      title: this.entryTitle.value,
-      text: this.entryText.value,
+      title: this.state.title,
+      text: this.state.text,
       date: moment().format("x")
     };
+    console.log(this)
+
 
     const dbref = firebase.database().ref();
 
     dbref.push(entry);
 
-    this.entryTitle.value = "";
-    this.entryText.value = "";
     this.entry.classList.remove("show");
     this.showEntriesList(e);
   }
 
   showEntry(index) {
-    console.log(this.props.index);
-    console.log(this.state.entries[index].title);
-    console.log(this.state.entries[index].key);
+    // console.log(this.props.index);
+    // console.log(this.state.entries[index].title);
+    // console.log(this.state.entries[index].key);
     this.setState({ index: this.state.entries[index].key, title: this.state.entries[index].title, text: this.state.entries[index].text });
     
     
@@ -93,7 +103,7 @@ class App extends React.Component {
 
   removeEntry(entryKey) {
     entryKey = this.state.index
-    console.log(entryKey);
+    // console.log(entryKey);
     const dbRef = firebase.database().ref(entryKey);
     
     dbRef.remove();
@@ -143,22 +153,26 @@ class App extends React.Component {
           </nav>
         </header>
         <section className="entry" ref={ref => (this.entry = ref)}>
+          
           <form action="" onSubmit={e => this.saveEntry(e)}>
-            <label htmlFor="entry-title" />
+            <label htmlFor="title" />
             <input
               type="text"
-              name="entry-title"
-              ref={ref => (this.entryTitle = ref)}
+              id="title"
+              name="title"
+              onChange={this.handleChange}
               value={this.state.title}
               placeholder="Title" required
             />
+           
             <div className="date" ref={ref => (this.date = ref)}>
               <p onClick={this.showEntriesList}>{moment().format("MMMM Do")}</p>
             </div>
-            <label htmlFor="entry-text" />
+            <label htmlFor="text" />
             <textarea
-              name="entry-text"
-              ref={ref => (this.entryText = ref)}
+              name="text"
+              id="text"
+              onChange={this.handleChange}
               value={this.state.text}
               placeholder="Write your story"
             />
