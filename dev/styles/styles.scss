@@ -8,9 +8,21 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     filter-blur: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
 }
 
 // Main Header
+h1 {
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+span {
+    font-weight: 200;
+}
+
 
 .mainHeader {
     padding: 0 50px;
@@ -27,13 +39,13 @@ body {
 	margin: 0 10px;
 	color: #fff;
 	text-decoration: none;
-    font-weight: 200;
+    font-weight: 300;
     padding: 15px 20px;
-    background: #00D6C1;
+    background: #07b6a4;
     border-radius: 50px;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
-    font-size: .8rem;
+    font-size: .9rem;
 
 }
 
@@ -43,12 +55,13 @@ body {
 	text-decoration: none;
 	font-weight: 300;
     font-family: 'Montserrat', sans-serif;
-    font-size: .9rem;
+    font-size: 1rem;
 
 }
 
 .mainHeader a.active {
-	color: #00D6C1
+    color: #07b6a4;
+    font-weight: 400;
 }
 // Sidebar Section
 
@@ -84,20 +97,21 @@ body {
 }
 
 h2 {
-    font-size: .8rem;
+    font-size: 1rem;
     font-weight: 500;
-    margin-bottom: 0;
+    margin-bottom: 2px;
 }
 
-.list-item h2:hover {
+.list-item :hover {
     cursor: pointer;
-    text-decoration: underline;
+    
+    
 }
 
 h3 {
-    font-size: .6rem;
+    font-size: .8rem;
     font-weight: 300;
-    margin-top: 5px;
+    margin: 0px;
 }
 
 
@@ -109,7 +123,13 @@ h3 {
 
 .list-item {
     border-top: 1px solid grey;
-    padding: 0 15px;
+    padding: 15px 15px;
+    
+}
+
+.list-item-container:hover {
+background-color: #07b6a4;
+color: white;
 }
 
 
@@ -121,7 +141,6 @@ h3 {
     left: 15%;
     width: 70%;
     height: 60%;
-	// background: rgba(255, 255, 255, .9);
 	transition: all 0.5s ease;
     padding: 20px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
@@ -146,7 +165,7 @@ h3 {
     border: none;
     outline: none;
     padding: 5px;
-    background-color: rgba(255, 254, 254, 0.65);
+    background-color: rgba(255, 254, 254, 0.55);
 }
 
 .entry .date {
@@ -168,12 +187,12 @@ h3 {
 .entry input[type=submit] {
     width: 100%;
     border: none;
-	color: #099ffc;
+	color: #07b6a4;
     background-color: white;
     float: right;
     text-align: right;
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 500;
         background-color: rgba(255, 254, 254, 0);
 
 }
@@ -200,42 +219,7 @@ form .fa-trash-alt:hover  {
     width: 50%;
 }
 
-// Read journal entry
-.journal {
-    margin: 0 auto;
-    width: 70%;
-    padding: 0 50px;
-    display: none;
-}
-
-.journal.show {
-    display: block;
-}
-
-.entry-preview {
-	background: white;
-	box-shadow: 3px 2px 3px rgba(0,0,0,0.1);
-	margin: 15px;
-	padding: 20px;
-	position: relative;
-}
-
-.entry-preview h2 {
-	margin-top: 0;
-	position: relative;
-}
-
-.entry-preview h3:after {
-	width: 20px;
-	height: 2px;
-	background: #182020;
-	display: block;
-	position: absolute;
-	bottom: -10px;
-	left: 0;
-	content: "";
-}
-
+// 
 .footer {
     display: flex;
     align-items: center;

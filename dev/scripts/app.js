@@ -145,7 +145,7 @@ class App extends React.Component {
               Map
             </a>
           </nav>
-          <h1>Journal App</h1>
+          <h1>Journal <span>Daily</span></h1>
           <nav>
             <a href="" className="lrg-btn" onClick={this.newJournalEntry}>
               Add a New Story
