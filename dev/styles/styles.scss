@@ -263,15 +263,23 @@ form .fa-trash-alt:hover  {
 }
 
 @media (max-width: 550px) {
+
+    h1 {
+        font-size: 2rem;
+        width: 300px;
+    }
+    
+    h2 {
+        padding-top: 10vh;
+    }
+
+
     .lrg-btn {
         position: absolute;
         top: 90vh;
         right: 0;
     }
 
-    h2 {
-        padding-top: 10vh;
-    }
 
     .nav {
         width: 50%;
