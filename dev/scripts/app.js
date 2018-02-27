@@ -111,6 +111,7 @@ class App extends React.Component {
     
     
     this.entry.classList.remove("show");
+    this.greeting.classList.remove("hide");
 
   }
 
@@ -164,18 +165,14 @@ class App extends React.Component {
             >
               Stories
             </a>
-            <a href="" className="nav">
-              Calendar
-            </a>
-            <a href="" className="nav">
-              Map
-            </a>
+            
           </nav>
           <h1>Journal <span>Daily</span></h1>
           <nav>
             <a href="" className="lrg-btn" onClick={this.newJournalEntry}>
-              Add a New Story
+              Add Journal Entry
             </a>
+            <i className="fas fa-plus-circle" onClick={this.newJournalEntry}></i>
           </nav>
         </header>
         <section className="greeting" ref={ref => (this.greeting = ref)}>
@@ -208,15 +205,7 @@ class App extends React.Component {
             />
             <div className="footer">
                 <div className="options">
-                  <div>
-                      <i className="far fa-lightbulb" />
-                  </div>
-                  <div>
-                      <i className="far fa-image" />
-                  </div>
-                  <div>
-                      <i className="fas fa-map-marker-alt" />
-                  </div>
+                  
                   <div onClick={() => this.removeEntry(this.entry.key)}>
                     <i className="far fa-trash-alt"></i>
                   </div>

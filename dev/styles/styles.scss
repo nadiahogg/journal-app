@@ -161,6 +161,10 @@ color: white;
 
 // Journal Entry
 
+.fa-plus-circle {
+    display: none;
+}
+
 .entry {
 	position: absolute;
 	top: -70%;
@@ -258,3 +262,18 @@ form .fa-trash-alt:hover  {
     width: 50%;
 }
 
+@media (max-width: 550px) {
+    .lrg-btn {
+        display: none;
+    }
+
+    .fa-plus-circle {
+    display: block;
+    font-size: 3rem;
+    color: #07b6a4;
+    position: absolute;
+    top: 50px;
+
+    
+}
+}
