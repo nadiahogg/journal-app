@@ -264,6 +264,10 @@ form .fa-trash-alt:hover  {
 
 @media (max-width: 550px) {
 
+    .mainHeader {
+        padding: 0;
+    }
+
     h1 {
         font-size: 2rem;
         width: 300px;
