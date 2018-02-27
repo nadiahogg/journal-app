@@ -66,7 +66,6 @@ class App extends React.Component {
   }
 
   handleChange(e) {
-    console.log(e.target.value);
     this.setState({
       [e.target.id]: e.target.value
     })
@@ -74,13 +73,11 @@ class App extends React.Component {
 
   saveEntry(e) {
     e.preventDefault();
-    console.log("submitted");
     const entry = {
       title: this.state.title,
       text: this.state.text,
       date: moment().format("x")
     };
-    console.log(this)
 
 
     const dbref = firebase.database().ref();
@@ -104,7 +101,6 @@ class App extends React.Component {
 
   removeEntry(entryKey) {
     entryKey = this.state.index
-    // console.log(entryKey);
     const dbRef = firebase.database().ref(entryKey);
     
     dbRef.remove();
@@ -117,7 +113,6 @@ class App extends React.Component {
 
   cancelEntry(e) {
     e.preventDefault();
-    console.log("clicked")
     this.entry.classList.remove("show");
     this.greeting.classList.remove("hide");
   }
@@ -163,16 +158,15 @@ class App extends React.Component {
               ref={ref => (this.nav = ref)}
               onClick={this.showEntriesList}
             >
-              Stories
+              Your Stories
             </a>
             
           </nav>
           <h1>Journal <span>Daily</span></h1>
           <nav>
             <a href="" className="lrg-btn" onClick={this.newJournalEntry}>
-              Add Journal Entry
+              Add a Story
             </a>
-            <i className="fas fa-plus-circle" onClick={this.newJournalEntry}></i>
           </nav>
         </header>
         <section className="greeting" ref={ref => (this.greeting = ref)}>
@@ -224,10 +218,10 @@ class App extends React.Component {
           <div className="close" onClick={this.showEntriesList}>
             <i className="far fa-times-circle" />
           </div>
-          <div className="search">
+          {/* <div className="search">
             <label htmlFor="search" />
             <input type="text" id="search" name="search" placeholder="search" onChange={this.handleChange}/>
-          </div>
+          </div> */}
           <div className="entries-list">
             {this.state.entries
               .map((entry, i) => {

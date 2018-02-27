@@ -19,6 +19,7 @@ h1 {
     font-family: 'Lato', sans-serif;
     text-transform: uppercase;
     font-weight: 900;
+    text-align: center;
 }
 
 span {
@@ -52,9 +53,10 @@ h3 {
 .mainHeader {
     padding: 0 50px;
     position: relative;
-	display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 	align-items: center;
-	justify-content: space-between;
+	// justify-content: space-around;
 	background: white;
     box-shadow: 0 2px 3px rgba(0,0,0,0.1);
     z-index: 1;
@@ -71,6 +73,7 @@ h3 {
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     font-size: .9rem;
+    float: right;
 
 }
 
@@ -104,7 +107,7 @@ h3 {
 }
 
 .entries-list {
-    height: 700px;
+    height: 95vh;
     overflow: scroll;
 }
 
@@ -161,9 +164,7 @@ color: white;
 
 // Journal Entry
 
-.fa-plus-circle {
-    display: none;
-}
+
 
 .entry {
 	position: absolute;
@@ -211,11 +212,10 @@ color: white;
 }
 
 .entry textarea {
-	height: 300px;
+	height: 40vh;
 }
 
 .entry input[type=submit], button {
-    width: 20%;
     border: none;
     color: #07b6a4;
     background-color: white;
@@ -264,16 +264,79 @@ form .fa-trash-alt:hover  {
 
 @media (max-width: 550px) {
     .lrg-btn {
-        display: none;
+        position: absolute;
+        top: 90vh;
+        right: 0;
     }
 
-    .fa-plus-circle {
-    display: block;
-    font-size: 3rem;
-    color: #07b6a4;
-    position: absolute;
-    top: 50px;
+    h2 {
+        padding-top: 10vh;
+    }
 
+    .nav {
+        width: 50%;
+        position: absolute;
+        top: 90vh;
+        left: 0;
+        margin: 0 10px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 300;
+        padding: 15px 20px;
+        background: #07b6a4;
+        border-radius: 50px;
+        font-family: 'Montserrat', sans-serif;
+        text-transform: uppercase;
+        font-size: .9rem;
+    }
+
+    .mainHeader a {
+        margin: 0 10px;
+        color: white;
+        text-decoration: none;
+        font-weight: 300;
+        font-family: 'Montserrat', sans-serif;
+        font-size: .9rem;
+        text-align: center;
+    }
+
+    .mainHeader a.active {
+    color: white;
+    font-weight: 400;
+}
+
+    .entry {
+    left: 5%;
+    width: 90%;
+    }
+
+    .sidebar {
+        width: 250px;
+        position: absolute;
+        top: 80px;
+        bottom: 0;
+        left: -270px;
+        transition: all 0.5s ease;
+        box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        background: rgb(255, 255, 255);
+        overflow: hidden;
+    }
     
+    .sidebar {
+    width: 350px;
+	position: absolute;
+	top: 80px;
+    bottom: 0;
+    left: -370px;
+	transition: all 0.5s ease;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    background: rgb(255, 255, 255);
+    overflow: hidden;
+    
+}
+
+.entry input,
+.entry textarea {
+    font-size: .9rem;
 }
 }

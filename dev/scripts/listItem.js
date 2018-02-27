@@ -2,7 +2,6 @@ import React from 'react';
 import moment from "moment";
 
 const ListItem = (props) => {
-// console.log(props.index)
     return (
         <div className="list-item-container">
             <div className="list-item" onClick={() => props.showEntry(props.index)} data-index={props.index}>
