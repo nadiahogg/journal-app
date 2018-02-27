@@ -6,10 +6,10 @@ const ListItem = (props) => {
     return (
         <div className="list-item-container">
             <div className="list-item" onClick={() => props.showEntry(props.index)} data-index={props.index}>
-                <h2>
+                <h4>
             {props.entry.title}
-                </h2>
-                <h3>{moment(props.entry.date, "x").format("MMMM Do YYYY, h:mm a")}</h3>
+                </h4>
+                <h5>{moment(props.entry.date, "x").format("MMMM Do YYYY, h:mm a")}</h5>
             </div>
         </div>
     )

@@ -13,6 +13,7 @@ body {
     color: #575757
 }
 
+
 // Main Header
 h1 {
     font-family: 'Lato', sans-serif;
@@ -22,6 +23,29 @@ h1 {
 
 span {
     font-weight: 200;
+}
+
+h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 4rem;
+    color: white;
+    text-align: center;
+    padding-top: 30vh;
+    margin-bottom: 0;
+    
+}
+h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 200;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    margin: 2vh;
+}
+
+.hide {
+    display: none
 }
 
 
@@ -97,7 +121,7 @@ span {
     font-size: 1.2rem;  
 }
 
-h2 {
+h4 {
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 3%;
@@ -110,7 +134,7 @@ h2 {
     
 }
 
-h3 {
+h5 {
     font-size: .8rem;
     font-weight: 300;
     margin: 0px;
@@ -130,7 +154,7 @@ h3 {
 }
 
 .list-item-container:hover {
-background-color: rgb(122, 70, 70);
+background-color: rgb(59, 59, 59);
 color: white;
 }
 
@@ -186,17 +210,21 @@ color: white;
 	height: 300px;
 }
 
-.entry input[type=submit] {
-    width: 100%;
+.entry input[type=submit], button {
+    width: 20%;
     border: none;
-	color: #07b6a4;
+    color: #07b6a4;
     background-color: white;
-    float: right;
     text-align: right;
     font-size: 1rem;
     font-weight: 500;
-        background-color: rgba(255, 254, 254, 0);
+    background-color: rgba(255, 254, 254, 0);
+    align-items: flex-end;
 
+}
+
+button {
+    width: 80%;
 }
 
 form .fa-lightbulb,
@@ -216,14 +244,17 @@ form .fa-trash-alt:hover  {
 	cursor: pointer;
 }
 
-.options, .save-cancel {
-    display: flex;
-    width: 50%;
-}
 
 // 
 .footer {
     display: flex;
     align-items: center;
     margin-top: 30px;
+    
 }
+
+.options, .save-cancel {
+    display: flex;
+    width: 50%;
+}
+

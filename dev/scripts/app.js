@@ -29,6 +29,7 @@ class App extends React.Component {
     this.newJournalEntry = this.newJournalEntry.bind(this);
     this.showEntry = this.showEntry.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.cancelEntry = this.cancelEntry.bind(this);
   }
 
   componentDidMount() {
@@ -60,11 +61,12 @@ class App extends React.Component {
     this.entry.classList.add("show");
     this.sidebar.classList.remove("show");
     this.nav.classList.remove("active");
+    this.greeting.classList.add("hide");
     
   }
 
   handleChange(e) {
-    // console.log(e.target.value);
+    console.log(e.target.value);
     this.setState({
       [e.target.id]: e.target.value
     })
@@ -87,17 +89,16 @@ class App extends React.Component {
 
     this.entry.classList.remove("show");
     this.showEntriesList(e);
+    this.greeting.classList.remove("hide");
   }
 
   showEntry(index) {
-    // console.log(this.props.index);
-    // console.log(this.state.entries[index].title);
-    // console.log(this.state.entries[index].key);
     this.setState({ index: this.state.entries[index].key, title: this.state.entries[index].title, text: this.state.entries[index].text });
     
     
     this.entry.classList.add("show");
     this.sidebar.classList.remove("show");
+    this.greeting.classList.add("hide");
     
   }
 
@@ -113,11 +114,21 @@ class App extends React.Component {
 
   }
 
+  cancelEntry(e) {
+    e.preventDefault();
+    console.log("clicked")
+    this.entry.classList.remove("show");
+    this.greeting.classList.remove("hide");
+  }
+
   showEntriesList(e) {
     e.preventDefault();
     this.sidebar.classList.toggle("show");
     this.nav.classList.toggle("active");
   }
+
+  
+  
   
   render() {
     let entryTitle;
@@ -126,7 +137,22 @@ class App extends React.Component {
         "{this.state.entries[index].title}"
       )
     }
+
+    let myDate = new Date();
+    let hrs = myDate.getHours();
+
+    let greet;
+    if (hrs < 12) {
+      greet = ('Good Morning')
+    } else if (hrs >= 12 && hrs <= 17) {
+      greet = ('Good Afternoon')
+    } else if (hrs >= 17 && hrs <= 24) {
+      greet = ('Good Evening')
+    }
+
+        
     return (
+      
       <div>
         <header className="mainHeader">
           <nav>
@@ -152,6 +178,10 @@ class App extends React.Component {
             </a>
           </nav>
         </header>
+        <section className="greeting" ref={ref => (this.greeting = ref)}>
+          <h2>{greet}</h2>
+          <h3>Share a story about your day.</h3>
+        </section>
         <section className="entry" ref={ref => (this.entry = ref)}>
           
           <form action="" onSubmit={e => this.saveEntry(e)}>
@@ -192,7 +222,7 @@ class App extends React.Component {
                   </div>
                 </div>
                 <div className="save-cancel">
-                    <button onClick={this.signIn}>CANCEL</button>
+                    <button onClick={this.cancelEntry}>CANCEL</button>
                     <input type="submit" value="DONE" />
                   
                 </div>
@@ -207,7 +237,7 @@ class App extends React.Component {
           </div>
           <div className="search">
             <label htmlFor="search" />
-            <input type="text" name="search" placeholder="search" />
+            <input type="text" id="search" name="search" placeholder="search" onChange={this.handleChange}/>
           </div>
           <div className="entries-list">
             {this.state.entries
