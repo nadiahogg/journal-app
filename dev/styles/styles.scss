@@ -216,6 +216,7 @@ color: white;
 }
 
 .entry input[type=submit], button {
+    width: 20%;
     border: none;
     color: #07b6a4;
     background-color: white;
@@ -260,6 +261,13 @@ form .fa-trash-alt:hover  {
 .options, .save-cancel {
     display: flex;
     width: 50%;
+}
+
+
+@media (max-width: 800px) {
+    .entry input[type=submit] {
+        width: 100%;
+    }
 }
 
 @media (max-width: 550px) {
@@ -347,8 +355,8 @@ form .fa-trash-alt:hover  {
     
 }
 
-.entry input,
-.entry textarea {
-    font-size: .9rem;
-}
+    .entry input,
+    .entry textarea {
+        font-size: .9rem;
+    }
 }
